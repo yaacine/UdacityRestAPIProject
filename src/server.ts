@@ -1,6 +1,8 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import {filterImageFromURL, deleteLocalFiles} from './util/util';
+import fs from 'fs'
+
 
 (async () => {
 
@@ -28,7 +30,31 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
   //   the filtered image file [!!TIP res.sendFile(filteredpath); might be useful]
 
   /**************************************************************************** */
+  app.get("/filteredimage" , async(req,res)=>{
+    var imageUrl:string = req.query.image_url;
+    if(!imageUrl){
+      res.status(422).send("image_url is requird try GET /filteredimage?image_url={{}}")
+    }
+    else{
+      var filteredpath = await filterImageFromURL(imageUrl)
+     
+      if(!filteredpath){
+         res.status(500).send("Internal server ERROR, try iy again !")
+      }
+      else{
+        //sending back the image
+         res.status(200).sendFile(filteredpath)
+        
+        //waiting for the file to be completely ready to be deleted (some file systems need this)
+        while(!fs.existsSync(filteredpath))
+        //deleting the image from the server 
+        await deleteLocalFiles([filteredpath]);
+        
+      } 
 
+    }
+
+  })
   //! END @TODO1
   
   // Root Endpoint

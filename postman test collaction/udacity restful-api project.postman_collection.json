@@ -1,0 +1,51 @@
+{
+	"info": {
+		"_postman_id": "6ec10ed2-2f29-4000-8b23-7f00614f7ef9",
+		"name": "udacity restful-api project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get filtred image from url",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "6802e00a-788a-4eda-a7ac-14e1456be0dd",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "e953b18e-e45e-4845-b7a9-430b9a326d7e",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "ee176234-f1d5-48cd-b065-e34d5b6ee625",
+			"key": "host",
+			"value": "http://localhost:8082",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
